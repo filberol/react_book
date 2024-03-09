@@ -7,7 +7,7 @@ export async function register(email, password) {
     );
     return oUC.user;
   } catch(err) {
-    return err.message;
+    return err.code;
   }
 }
 
@@ -18,7 +18,7 @@ export async function login(email, password) {
     );
     return oUC.user;
   } catch(err) {
-    return err.message;
+    return err.code;
   }
 }
 

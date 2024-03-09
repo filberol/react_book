@@ -25,7 +25,7 @@ export default class TodoAdd extends Component {
   }
 
   handleDescChange(evt) {
-    this.formData.title = evt.target.value;
+    this.formData.desc = evt.target.value;
   }
 
   handleImageChange(evt) {
@@ -42,18 +42,20 @@ export default class TodoAdd extends Component {
     }
   }
 
-  handleFormSubmit(evt) {
+  async handleFormSubmit(evt) {
     evt.preventDefault();
     const newDeed = { ...this.formData };
     const date = new Date();
     newDeed.done = false;
     newDeed.createdAt = date.toLocaleString();
-    newDeed.key = date.getTime();
     this.props.add(newDeed);
-    this.setState((state) => ({ redirect: true }))
+    this.setState((state) => ({ redirect: true }));
   }
 
   render() {
+    if (!this.props.currentUser) {
+      return (<Navigate to="/login" replace/>)
+    }
     if (this.state.redirect) {
       return (<Navigate to="/"/>)
     }

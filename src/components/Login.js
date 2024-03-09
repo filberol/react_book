@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Navigate } from "react-router-dom";
-import { login, register } from "../auth/auth";
+import { login } from "../auth/auth";
 
 export default class Register extends Component {
   constructor(props) {
